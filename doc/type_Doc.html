@@ -1,0 +1,51 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Doc" rel="Chapter" href="Doc.html"><title>Doc</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;formula&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">False</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">True</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Atom</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="keywordsign">'</span>a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Not</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Doc</span>.formula<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">And</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Doc</span>.formula&nbsp;*&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Doc</span>.formula<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Or</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Doc</span>.formula&nbsp;*&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Doc</span>.formula<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Imp</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Doc</span>.formula&nbsp;*&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Doc</span>.formula<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Iff</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Doc</span>.formula&nbsp;*&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Doc</span>.formula<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;prop&nbsp;=&nbsp;<span class="constructor">P</span>&nbsp;<span class="keyword">of</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;print_prop_formula&nbsp;:&nbsp;<span class="constructor">Doc</span>.prop&nbsp;<span class="constructor">Doc</span>.formula&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;atoms&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Doc</span>.formula&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;tautology&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Doc</span>.formula&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;satisfiable&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Doc</span>.formula&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;time&nbsp;:&nbsp;(<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>b<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;variable&nbsp;=&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;id&nbsp;=&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;op&nbsp;=&nbsp;<span class="constructor">Ou</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Et</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Impl</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Equiv</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;tableT<br>
+&nbsp;&nbsp;<span class="keyword">exception</span>&nbsp;<span class="constructor">CleAbsente</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;init_t&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.tableT<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;zero&nbsp;:&nbsp;<span class="constructor">Doc</span>.id<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;one&nbsp;:&nbsp;<span class="constructor">Doc</span>.id<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;isZero&nbsp;:&nbsp;<span class="constructor">Doc</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;isOne&nbsp;:&nbsp;<span class="constructor">Doc</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add&nbsp;:&nbsp;<span class="constructor">Doc</span>.tableT&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.variable&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;var&nbsp;:&nbsp;<span class="constructor">Doc</span>.tableT&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.variable<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;low&nbsp;:&nbsp;<span class="constructor">Doc</span>.tableT&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;high&nbsp;:&nbsp;<span class="constructor">Doc</span>.tableT&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;tableH<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;init_ht&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.tableH<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;member&nbsp;:&nbsp;<span class="constructor">Doc</span>.tableH&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.variable&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;lookup&nbsp;:&nbsp;<span class="constructor">Doc</span>.tableH&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.variable&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;insert&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Doc</span>.tableH&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.variable&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;print_t&nbsp;:&nbsp;<span class="constructor">Doc</span>.tableT&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Doc</span>.id&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;debug_print_t&nbsp;:&nbsp;<span class="constructor">Doc</span>.tableT&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;debug_print_h&nbsp;:&nbsp;<span class="constructor">Doc</span>.tableH&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+<span class="keyword">end</span></code></body></html>
