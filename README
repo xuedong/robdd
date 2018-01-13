@@ -33,7 +33,3 @@
    * run make in the root directory tp_bdd. All should compile correctly.
    * run ./main to run the executable
    * open test.ml with Emacs, launch the ocaml toplevel, evaluate the code. 
-
-- It does not work. What can I do ? 
-   * send a mail to paulin.fournier@inria.fr
-       
